@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Theme, themes, loadThemePreference, saveThemePreference } from '../../services/themeService';
+import { themes, loadThemePreference, saveThemePreference } from '../../services/themeService';
 import { EditorConfig, loadEditorConfig, updateEditorConfigItem } from '../../services/editorConfigService';
 import './styles.css';
 

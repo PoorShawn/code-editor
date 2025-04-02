@@ -35,7 +35,7 @@ export interface DebugSession {
 }
 
 // 模拟的代码执行环境
-const executeJavaScript = (code: string, timeout: number): Promise<CodeExecutionResult> => {
+const executeJavaScript = (code: string): Promise<CodeExecutionResult> => {
   return new Promise((resolve) => {
     const startTime = Date.now();
     let output = '';
@@ -102,7 +102,7 @@ const executeJavaScript = (code: string, timeout: number): Promise<CodeExecution
 };
 
 // 模拟执行HTML代码
-const executeHTML = (code: string): Promise<CodeExecutionResult> => {
+const executeHTML = (): Promise<CodeExecutionResult> => {
   return new Promise((resolve) => {
     try {
       // 在实际应用中，可以使用iframe或在服务端渲染HTML
@@ -120,7 +120,7 @@ const executeHTML = (code: string): Promise<CodeExecutionResult> => {
 };
 
 // 模拟执行CSS代码
-const executeCSS = (code: string): Promise<CodeExecutionResult> => {
+const executeCSS = (): Promise<CodeExecutionResult> => {
   return new Promise((resolve) => {
     try {
       // 在实际应用中，可以将CSS应用到iframe或预览区域
@@ -141,24 +141,24 @@ const executeCSS = (code: string): Promise<CodeExecutionResult> => {
 export const executeCode = async (
   params: CodeExecutionParams
 ): Promise<CodeExecutionResult> => {
-  const { code, language, timeout = 5000 } = params;
+  const { code, language } = params;
   
   try {
     switch (language.toLowerCase()) {
       case 'javascript':
       case 'js':
-        return await executeJavaScript(code, timeout);
+        return await executeJavaScript(code);
       
       case 'typescript':
       case 'ts':
         // 注意：这里简化处理，实际应先编译TS再执行
-        return await executeJavaScript(code, timeout);
+        return await executeJavaScript(code);
       
       case 'html':
-        return await executeHTML(code);
+        return await executeHTML();
       
       case 'css':
-        return await executeCSS(code);
+        return await executeCSS();
       
       default:
         return {
@@ -225,9 +225,7 @@ export const toggleBreakpoint = (
 
 // 模拟调试会话启动
 export const startDebugSession = (
-  session: DebugSession,
-  code: string,
-  language: string
+  session: DebugSession
 ): DebugSession => {
   // 在实际应用中，这里应该启动真正的调试器
   // 这里只是简单模拟

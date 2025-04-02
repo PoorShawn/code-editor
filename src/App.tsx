@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './App.css';
 import CodeEditor from './components/Editor';
 import FileTree from './components/FileTree';

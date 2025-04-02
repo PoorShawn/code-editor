@@ -15,21 +15,12 @@ export interface AIResponse {
 }
 
 // 模拟API密钥配置（实际应用中应从环境变量或安全存储获取）
-const API_CONFIG = {
-  // 这里可以配置不同的AI服务提供商
-  openai: {
-    apiKey: '', // 实际使用时应从环境变量获取
-    endpoint: 'https://api.openai.com/v1/completions',
-    model: 'gpt-3.5-turbo'
-  },
-  // 可以添加其他AI服务提供商
-};
 
 // 获取AI代码建议
 export const getAICodeSuggestions = async (
   params: AIRequestParams
 ): Promise<AIResponse> => {
-  const { prompt, code = '', language = 'javascript', maxTokens = 500 } = params;
+  const { prompt, code = '', language = 'javascript' } = params;
   
   try {
     // 实际项目中，这里应该调用真实的AI API

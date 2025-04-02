@@ -10,7 +10,7 @@ interface TerminalProps {
 
 const Terminal = ({ output = '', isRunning = false, onClear, height = '200px' }: TerminalProps) => {
   const terminalRef = useRef<HTMLDivElement>(null);
-  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [] = useState<string[]>([]);
   
   // 自动滚动到底部
   useEffect(() => {

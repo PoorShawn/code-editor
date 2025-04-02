@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import './styles.css';
 import { executeCode, CodeExecutionResult } from '../../services/codeExecutionService';
 import Terminal from '../Terminal';
@@ -10,7 +10,7 @@ interface DebugPanelProps {
   onBreakpointRemove?: (line: number) => void;
 }
 
-const DebugPanel = ({ code, language, onBreakpointSet, onBreakpointRemove }: DebugPanelProps) => {
+const DebugPanel = ({ code, language }: DebugPanelProps) => {
   const [isRunning, setIsRunning] = useState(false);
   const [output, setOutput] = useState('');
   const [error, setError] = useState<string | undefined>(undefined);
