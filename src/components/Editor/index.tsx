@@ -59,11 +59,11 @@ const CodeEditor = ({
     }
   };
 
-  // const handleEditorError = (error: any) => {
-  //   console.error('Monaco editor loading error:', error);
-  //   setLoadError(`编辑器加载失败: ${error?.message || '未知错误'}`);
-  //   setIsLoading(false);
-  // };
+  const handleEditorError = (error: any) => {
+    console.error('Monaco editor loading error:', error);
+    setLoadError(`编辑器加载失败: ${error?.message || '未知错误'}`);
+    setIsLoading(false);
+  };
 
   return (
     <div className="code-editor-container">
@@ -84,7 +84,7 @@ const CodeEditor = ({
             onMount={handleEditorDidMount}
             beforeMount={handleEditorWillMount}
             onValidate={handleEditorValidation}
-            // onError={handleEditorError}
+            // Removed onError as it is not a valid prop for the Editor component
             theme={theme}
             options={{
               minimap: { enabled: true },
